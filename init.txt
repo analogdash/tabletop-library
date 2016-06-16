@@ -1,0 +1,70 @@
+CREATE TABLE users (
+	userid VARCHAR(255), #PK
+	username VARCHAR(255),
+	fname VARCHAR(255),
+	lname VARCHAR(255),
+	email VARCHAR(255),
+	address VARCHAR(255),
+	phone VARCHAR(255),
+	aboutme MEDIUMTEXT,
+	usertype VARCHAR(255),
+	profilepic MEDIUMBLOB,
+	profilepicsize VARCHAR(255)
+);
+
+CREATE TABLE authen(
+	userid VARCHAR(255), #FK
+	passwdhash VARCHAR(255)
+);
+
+CREATE TABLE gametable (
+	gameid VARCHAR(255), #PK
+	gamename VARCHAR(255),
+	publisher VARCHAR(255), #AUTHORITY LIST
+	publishyear INT,
+	genre VARCHAR(255), #AUTHORITY LIST
+	description MEDIUMTEXT,
+	playtimemin INT,
+	playtimemax INT,
+	playersmin INT,
+	playersmax INT,
+	playeragemin INT
+);
+
+CREATE TABLE gamestats (
+	gameid VARCHAR(255), #FK
+	upvotes INT,
+	downvotes INT,
+	faves INT
+);
+
+CREATE TABLE gamefiles (
+	fileid VARCHAR(255), #PK
+	filename VARCHAR(255),
+	filetype VARCHAR(255),
+	filesize VARCHAR(255),
+	gameid VARCHAR(255), #FK
+	content MEDIUMBLOB
+);
+
+CREATE TABLE tagslist (
+	gameid VARCHAR(255), #FK
+	tagtext VARCHAR(255)
+);
+
+CREATE TABLE commentstable (
+	commentid VARCHAR(255), #PK
+	userid VARCHAR(255), #FK
+	gameid VARCHAR(255), #FK
+	vote INT,
+	commenttext MEDIUMTEXT,
+	submitdate DATE
+);
+
+CREATE TABLE favelist (
+	userid VARCHAR(255), #FK
+	gameid VARCHAR(255) #FK
+);
+
+
+
